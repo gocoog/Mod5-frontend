@@ -32,6 +32,7 @@ class CreateChildForm extends Component {
               last_name: this.state.last_name,
               email_address: this.state.email_address,
               password: this.state.password,
+              adult: false,
               parent_id: parseInt(localStorage.getItem('user_id'))
           }
         }
@@ -64,7 +65,7 @@ class CreateChildForm extends Component {
             <div className="signup-page">
                 <div className="form">
                     <form className="signup-form"onSubmit={this.handleSubmit}>
-                        {this.state.formSuccess ? <h1>Account succesfully created!</h1> : null}
+                        {this.state.formSuccess ? <h1>Account succesfully created!</h1> : <h1>account not created</h1>}
                         <h2> Sign your child up and start the journey! </h2>
                         <input required type="text" onChange={this.handleInputChange} name='first_name' placeholder="First Name"  />
                         <input required type="text" onChange={this.handleInputChange} name='last_name' placeholder="Last Name"  />

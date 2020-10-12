@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const handleLoginRender = (isLoggedIn) => {
+const handleLoginRender = (isLoggedIn, isAdult) => {
     if(isLoggedIn){
       return (
           <>
         <NavLink className="menu" to="/logout"> Logout </NavLink>
-        <NavLink className="menu" to="/create_child_account"> Create Your Childs Account! </NavLink>
+        {isAdult ? <NavLink className="menu" to="/create_child_account"> Create Your Childs Account! </NavLink> : 
+        <>
+        <NavLink className="menu" to="/wallet">Wallet</NavLink>
+        <NavLink className="menu" to="/goals">Goals</NavLink>
+        </>
+        }
+        
+        
         </>
       )
     }else{
@@ -25,7 +32,7 @@ const handleLoginRender = (isLoggedIn) => {
         <div>
           <NavLink className="menu" to="/"> Home </NavLink>
           {
-            handleLoginRender(props.isLoggedIn)
+            handleLoginRender(props.isLoggedIn, props.isAdult)
           }
           </div>
     )

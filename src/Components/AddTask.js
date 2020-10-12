@@ -42,9 +42,10 @@ class AddTask extends Component {
       getChild = (children) => {
           for(const i of children){
               if (!i.adult && i.parent_id === parseInt(localStorage.getItem('user_id'))) {
+                  console.log(i)
                   this.setState({
                       ...this.state,
-                      options: [this.state.options, {value: i.id, label: this.titleCase(`${i.first_name} ${i.last_name}`)}],
+                      options: [...this.state.options, {value: i.id, label: this.titleCase(`${i.first_name} ${i.last_name}`)}],
                       children: [this.state.children, i]
                   })
               }
@@ -53,6 +54,7 @@ class AddTask extends Component {
 
       handleDropdownChange = (selectedId) => {
         this.setState({
+            ...this.state,
             child_id: selectedId.value
         })
       }
@@ -75,10 +77,14 @@ class AddTask extends Component {
           }
         }).then(response => response.json())
         .then(newTask => {
-            console.log(newTask)
+            this.setState({
+                ...this.initialState
+            })
+            alert("donezo")
+            this.props.handleAddTaskSubmit(newTask)
             // this.props.handleElectionSubmit(newTask)
-            this.setState(this.initialState,() => {
-            this.props.history.push('/')})
+            // this.setState(this.initialState,() => {
+            // this.props.history.push('/')})
         
         })
       }
