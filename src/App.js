@@ -8,7 +8,7 @@ import ProfileContainer from './Containers/ProfileContainer'
 import AddTask from './Components/AddTask'
 import CreateChildForm from './Components/CreateChildForm'
 import Wallet from './Components/Wallet'
-import Goals from './Components/Goals'
+import GoalForm from './Components/GoalForm'
 
 
 import {
@@ -34,9 +34,6 @@ class App extends Component {
     this.getTasks()
   }
 
-  
-
-
   getTasks = () => {
     if(localStorage.getItem('auth_key')){
       const id = localStorage.getItem('user_id')
@@ -49,7 +46,6 @@ class App extends Component {
       .then(([res1, res2]) => {
           this.handleRes1(res1)
           this.handleRes2(res2)
-        
       });
     }
 }
@@ -122,6 +118,7 @@ handleRes2 = (res2) => {
   render(){
     return (
     <div className="parent" >
+      <h1>Money and Sense</h1>
         <BrowserRouter>
         <Header isLoggedIn={this.state.isLoggedIn} isAdult={this.state.isAdult}/>
           <Switch>
@@ -155,8 +152,8 @@ handleRes2 = (res2) => {
               <Wallet />
             </Route>
 
-            <Route exact path="/goals">
-              <Goals />
+            <Route exact path="/addgoal">
+              <GoalForm />
             </Route>
 
             <Route path="/logout" component={() => {
