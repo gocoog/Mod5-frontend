@@ -14,6 +14,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import TaskImage from '../images/finance.jpg'
+import Coin from '../images/coin.png'
 
 const useStyles = theme => ({
     paper: {
@@ -38,7 +40,7 @@ const useStyles = theme => ({
 class AddTask extends Component {
     initialState = {
         task_name: '',
-        task_img: '',
+        task_img: TaskImage,
         task_amount: 0,
         parent_id: parseInt(localStorage.getItem('user_id')),
         children: [],
@@ -113,11 +115,11 @@ class AddTask extends Component {
             this.setState({
                 ...this.initialState
             })
-            alert("donezo")
+            alert("Task succesfully create!")
             this.props.handleAddTaskSubmit(newTask)
             // this.props.handleElectionSubmit(newTask)
-            // this.setState(this.initialState,() => {
-            // this.props.history.push('/')})
+            this.setState(this.initialState,() => {
+            this.props.history.push('/')})
         
         })
       }
@@ -126,7 +128,14 @@ class AddTask extends Component {
     render(){
         const { classes } = this.props;
         return(
-            <Container component="main" maxWidth="xs">
+            <div className="top-element">
+                <div className="left-element">
+
+                    
+                </div>
+            <div className="add-task-form" >
+            
+            <Container component="main" maxWidth="xs" >
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
@@ -165,7 +174,6 @@ class AddTask extends Component {
                             onChange={this.handleInputChange}
                             name='task_img'
                             variant="outlined"
-                            required
                             fullWidth
                             id="task_img"
                             label="Task Image"
@@ -200,6 +208,9 @@ class AddTask extends Component {
                     </form>
                 </div>
             </Container>
+        </div>
+
+        </div>
         //     <div>
         //     <div className="task-page">
         //         <div className="form">

@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import TaskCard from '../Components/TaskCard'
 import { Link } from 'react-router-dom';
+import profile from '../images/test.png';
 
 class ProfileContainer extends React.Component {
 
@@ -14,17 +15,42 @@ class ProfileContainer extends React.Component {
 
     render(){
         return (
-            <div>
-                {this.props.isAdult ? <button onClick={this.handleClick}> Add New Task! </button> : null}
-                
-                profile
+            <div className='flex-container'>
+                <div className="flex-child info">
+                        <div className="info">
+                            
+                                {this.props.isAdult ? 
+                                <div className="test">
+                             <h1 className="profile-title">
+                                 Create tasks for your kids!
+                                 </h1>
+                                 <hr></hr>
+                             <p className="parent-task-page">It is never too early to start teaching your young ones the importance of proper money management.  </p>
+                             <p className="parent-task-page">With the availability of tasks at their fingertips, your kids will be well on their journey of knowing how to earn, save, and share their money.</p>
+                             <p className="parent-task-page">To your right you can keep tabs on your childrens tasks. Delete them if they're complete or hit that completion button to help your child reach their goals!</p>
 
-                {this.props.tasks.map(task => 
-                <TaskCard key={task.id} task={task} submitted={task.submitted} completed={task.completed} isAdult={this.props.isAdult} handleDelete={this.props.handleDelete}/>
-                )
-                }
+                             {this.props.isAdult ? <button className="add-task" onClick={this.handleClick}> Add New Task! </button> : null}
+                             </div>   
+                            :
+                            <div>
+                            <h1>Task Corner!</h1>
+                            <p className="parent-task-page">Take a look at all your available tasks! Complete each one and hit the submit button to let your parent know you're done. Watch as your money grows and you begin to reach your goals!</p>
+                            </div>
+                            }
+                               
+                    {/* <img className="test" src={profile} alt="Logo" /> */}
+                    </div>
+                </div>
+                <div className="flex-child" id="cards">
+                   
 
-            </div>  
+                    {this.props.tasks.map(task => 
+                    <TaskCard key={task.id} task={task} submitted={task.submitted} completed={task.completed} isAdult={this.props.isAdult} handleDelete={this.props.handleDelete}/>
+                    )
+                    }
+
+                </div>  
+            </div>
         )
     }
 }

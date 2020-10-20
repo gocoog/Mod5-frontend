@@ -1,7 +1,8 @@
 import React from 'react'
 import 'tui-grid/dist/tui-grid.css';
 import Grid from '@toast-ui/react-grid';
-
+import TuiGrid from 'tui-grid';
+TuiGrid.applyTheme('striped');
 // let data = []
 
 // const mapTransactions = (props) => {
@@ -30,7 +31,7 @@ const TransactionTable = (props) => {
                 data={data}
                 columns={columns}
                 rowHeight={25}
-                bodyHeight={100}
+                bodyHeight={300}
                 heightResizable={true}
                 // rowHeaders={['rowNum']}
             />

@@ -32,6 +32,7 @@ class App extends Component {
 
   componentDidMount(){
     this.getTasks()
+
   }
 
   getTasks = () => {
@@ -118,7 +119,6 @@ handleRes2 = (res2) => {
   render(){
     return (
     <div className="parent" >
-      <h1>Money and Sense</h1>
         <BrowserRouter>
         <Header isLoggedIn={this.state.isLoggedIn} isAdult={this.state.isAdult}/>
           <Switch>

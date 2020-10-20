@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import GoalCard from './GoalCard'
 import TransactionTable from './TransactionTable';
+import Lottie from 'react-lottie';
+import animationData from '../lotties/dash';
 
-
+const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
 export default class Wallet extends Component {
     state = {
@@ -68,15 +77,29 @@ export default class Wallet extends Component {
 
     render(){
         return (
-            <div>
-                wallet
-                {this.state.wallet_amount}
-                <div className='goal-list'>
+            <div id="bg">
+                
+            <div className="flex-container">
+                <div className='flex-child' >
+                <h1 className="progress-page">Progress Page!</h1>
+                    <div id="cards">
                     {this.state.goals.map(goal => 
-                        <GoalCard  key={goal.id} goal={goal}/>
+                        <GoalCard  key={goal.id} goal={goal} wallet_amount={this.state.wallet_amount}/>
                         )}
+
+                    </div>
+                
                 </div>
+                <div className="flex-child" id="transaction-table">
+                <Lottie 
+                    options={defaultOptions}
+                    height={400}
+                    width={400}
+                />
                 <TransactionTable transactions={this.state.transactions}/>
+                
+                </div>
+                </div>
             </div>
         )
     }

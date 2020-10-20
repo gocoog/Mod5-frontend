@@ -1,7 +1,48 @@
 .App {
   text-align: center;
 }
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
+@keyframes example {
+  0%   {top:0px;}
+
+  50%  {top:100px;}
+
+  100% {top:0px;}
+}
+
+@keyframes clouds {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+#root{
+  min-height:100%;
+}
+
+body{
+  height:100vh;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 80px;
+  transition: all .2s ease-in-out;
+}
+
+#animate-area	{ 
+  background-size: 700px;
+  -webkit-background-size: 700px;
+  margin-top: -64px;
+  
+  height: 100vh;
+	background-image: url(images/clouds.jpg);
+	background-repeat: repeat-x;
+	animation: clouds 50s linear infinite;
+}
 
 @font-face {
   font-family: 'Crayon';
@@ -19,6 +60,22 @@ h1{
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+hr{
+  border: mediumseagreen solid 1px;
+  border-radius: 1px;
+  width: 50%;
+}
+
+/* .child-form{
+  background-color: blue;
+} */
+
+.parent-task-page{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 /* Add some padding inside the card container */
@@ -44,4 +101,246 @@ img {
 
 .menu {
   text-decoration: none;
+}
+
+.flex-container {
+  height: 100vh;
+  padding: 0px 7% 0px 7%;
+  -webkit-display: -webkit-box;
+  -webkit-display: -webkit-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-direction: column;
+}
+
+.flex-child {
+  text-align: center;
+    
+  overflow: scroll;
+
+  -webkit-flex: 1;
+  flex: 1;
+}  
+
+.info{
+  position: relative; 
+  height: 100vh;
+  width: 100%;
+  display: flex;
+ 
+  justify-content: center;
+}
+.info::before {
+  content: "";
+      background-image: url("images/test.png");
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.1;
+      animation: example 10s infinite;
+}
+
+.top-element{
+  width: 100%;
+  background-color: lightcyan;
+}
+
+.parent-wallet{
+  width: 100%;
+}
+
+.goal-list{
+  width: 50%;
+}
+
+.progress-page{
+  display: block;
+}
+
+tspan{
+  background-color: teal;
+}
+
+.left-element{
+  width: 50%;
+  float: left;
+  content: "";
+  background-image: url("images/coin.png");
+  background-size: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 200px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  animation: App-logo-spin infinite 5s linear;
+
+  transition: all .2s ease-in-out;
+}
+.add-task-form{
+  margin-left: 35%;
+}
+
+.test {
+  position: relative; 
+  text-align: center;
+}
+
+.card-container{
+  margin: 20px;
+  width: 310px;
+  height: 365px;
+}
+
+.card-container2{
+  margin: 20px;
+  width: 300px;
+  height: 405px;
+}
+
+#cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.text {
+  color: #000000;
+  position: relative;
+}
+
+.child-form-container{
+  background-color: white;
+  border-radius: 18px;
+}
+
+/* #myCanvas{
+  background-color:#c2cafc;
+} */
+
+.card-buttons{
+  justify-content: center;
+}
+
+.delete-button {
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Crayon";
+	font-size:20px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.delete-button:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+.delete-button:active {
+	position:relative;
+	top:1px;
+}
+
+.submit-button {
+	box-shadow: 3px 4px 0px 0px #3e7327;
+	background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	background-color:#77b55a;
+	border-radius:18px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Crayon";
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+}
+.submit-button:hover {
+	background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	background-color:#72b352;
+}
+.submit-button:active {
+	position:relative;
+	top:1px;
+}
+
+.completion-button {
+	box-shadow: 3px 4px 0px 0px #28218a;
+	background:linear-gradient(to bottom, #2028c4 5%, #3856f0 100%);
+	background-color:#2028c4;
+	border-radius:18px;
+	border:1px solid #1928cf;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Crayon";
+	font-size:17px;
+	padding:5px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #050f80;
+}
+.completion-button:hover {
+	background:linear-gradient(to bottom, #3856f0 5%, #2028c4 100%);
+	background-color:#3856f0;
+}
+.completion-button:active {
+	position:relative;
+	top:1px;
+}
+
+.all-done-button {
+	box-shadow: 3px 4px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:18px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family: "Crayon";
+	font-size:20px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.add-task {
+	box-shadow: 3px 4px 0px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:18px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Crayon";
+	font-size:25px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.add-task:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.add-task:active {
+	position:relative;
+	top:1px;
+}
+
+.account-created{
+  justify-content: center;
 }

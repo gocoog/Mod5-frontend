@@ -7,21 +7,33 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class TaskCard extends React.Component {
+const useStyles = theme => ({
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+      
+    },
+  });
+
+class TaskCard extends React.Component {
     state = {
         submitted: false,
         completed: false
     }
 
-    useStyles = makeStyles({
-        root: {
-          maxWidth: 345,
-        },
-        media: {
-          height: 140,
-        },
-      });
+    // useStyles = makeStyles({
+    //     root: {
+    //       maxWidth: 345,
+    //     },
+    //     media: {
+    //       height: 140,
+          
+    //     },
+    //   });
 
     componentDidMount() {
         this.setState({
@@ -121,36 +133,36 @@ export default class TaskCard extends React.Component {
     }
 
     render(){
+        const { classes } = this.props;
         return(
-
-            <Card style={{maxWidth: 345}}>
+            <Card className="card-container">
                 
                 <CardActionArea>
                     <CardMedia
-                    style={{height: 140}}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
+                    style={{height: 190}}
+                    image={this.props.task.task_img}
+                    title="task image"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        ${this.props.task.task_amount}
+                        Task amount: ${this.props.task.task_amount}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Task description:
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {this.props.task.task_name}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button >
-                    Share
-                    </Button>
+                <CardActions className="card-buttons">
                     {this.props.isAdult ? 
-                        (this.state.completed ? <button disabled >Complete</button> : (this.state.submitted ? <button onClick={this.handleAdultButton}>Submit completion</button> : null)) 
+                        (this.state.completed ? <button className="all-done-button" disabled >Complete</button> : (this.state.submitted ? <button className="completion-button" onClick={this.handleAdultButton}>Submit completion</button> : null)) 
                         : 
-                        (this.state.submitted ? <button disabled > submitted</button> : <button onClick={this.handleChildClick}>submit!</button>)
+                        (this.state.submitted ? <button className="all-done-button"  disabled > submitted</button> : <button className="submit-button" onClick={this.handleChildClick}>submit!</button>)
                         }
                         <div>
-                            {this.props.isAdult ? <button onClick={(e) => this.props.handleDelete(e, this.props.task.id)}>❌</button> : null}
+                            {this.props.isAdult ? <button className="delete-button" onClick={(e) => this.props.handleDelete(e, this.props.task.id)}>Delete</button> : null}
                         </div>
                    
                 </CardActions>
@@ -174,3 +186,5 @@ export default class TaskCard extends React.Component {
         )
     }
 }
+
+export default withStyles(useStyles) (TaskCard)

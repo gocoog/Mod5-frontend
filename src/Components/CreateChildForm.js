@@ -41,6 +41,7 @@ class CreateChildForm extends Component {
     }
 
     state = this.initialState
+   
 
     failedSignup = () => {
             return <Redirect push to="/create_child_account" />
@@ -53,7 +54,7 @@ class CreateChildForm extends Component {
       }
     
       handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         const newChildAccount = {
           user: {
@@ -105,83 +106,86 @@ class CreateChildForm extends Component {
     render(){
       const { classes } = this.props;
         return (
-          <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-        Sign up your child!
-        </Typography>
-        <form className={classes.form} onSubmit={this.handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onChange={this.handleInputChange}
-                name='first_name'
-                autoComplete="fname"
-                variant="outlined"
-                required
+          <div id="animate-area">
+            {this.state.formSuccess ? <h1 className="account-created">Account succesfully created! Head back to main page and add tasks!</h1> : null}
+            <Container component="main" maxWidth="xs" className="child-form-container">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+            Sign up your child!
+            </Typography>
+            <form className={classes.form} onSubmit={this.handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    onChange={this.handleInputChange}
+                    name='first_name'
+                    autoComplete="fname"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    onChange={this.handleInputChange}
+                    name='last_name'
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    autoComplete="lname"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    type="email"
+                    onChange={this.handleInputChange}
+                    name='email_address'
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    onChange={this.handleInputChange}
+                    name='password'
+                    variant="outlined"
+                    required
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
                 fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onChange={this.handleInputChange}
-                name='last_name'
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                type="email"
-                onChange={this.handleInputChange}
-                name='email_address'
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                onChange={this.handleInputChange}
-                name='password'
-                variant="outlined"
-                required
-                fullWidth
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Create Child Account!
-          </Button>
-        </form>
-      </div>
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Create Child Account!
+              </Button>
+            </form>
+          </div>
 
-      <br />
-    </Container>
+          <br />
+        </Container>
+        </div>
         //     <div>
         //     <div className="signup-page">
         //         <div className="form">
