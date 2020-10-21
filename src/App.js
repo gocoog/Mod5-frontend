@@ -9,6 +9,7 @@ import AddTask from './Components/AddTask'
 import CreateChildForm from './Components/CreateChildForm'
 import Wallet from './Components/Wallet'
 import GoalForm from './Components/GoalForm'
+import LearnMore from './Components/LearnMore'
 
 
 import {
@@ -172,7 +173,10 @@ handleRes2 = (res2) => {
               return <Redirect to="/login" />
             }} />
             <Route exact path="/create_child_account">
-              <CreateChildForm />
+              <CreateChildForm className="create-child-form"/>
+            </Route>
+            <Route exact path="/learn_more">
+              <LearnMore />
             </Route>
             <Route exact path="/addtask">
               <AddTask userId={this.state.userId} getTasks={this.getTasks} handleAddTaskSubmit={this.handleAddTaskSubmit}/>

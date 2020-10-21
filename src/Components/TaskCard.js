@@ -157,7 +157,7 @@ class TaskCard extends React.Component {
                 </CardActionArea>
                 <CardActions className="card-buttons">
                     {this.props.isAdult ? 
-                        (this.state.completed ? <button className="all-done-button" disabled >Complete</button> : (this.state.submitted ? <button className="completion-button" onClick={this.handleAdultButton}>Submit completion</button> : null)) 
+                        (this.state.completed ? <button className="all-done-button" disabled >Approved</button> : (this.state.submitted ? <button className="submit-button" onClick={this.handleAdultButton}>Approve</button> : null)) 
                         : 
                         (this.state.submitted ? <button className="all-done-button"  disabled > submitted</button> : <button className="submit-button" onClick={this.handleChildClick}>submit!</button>)
                         }

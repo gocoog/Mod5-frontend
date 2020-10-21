@@ -9,6 +9,8 @@ import Mood from '@material-ui/icons/Mood';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Lottie from 'react-lottie';
+import animationData from '../lotties/money';
 
 const useStyles = theme => ({
     paper: {
@@ -29,6 +31,15 @@ const useStyles = theme => ({
       margin: theme.spacing(3, 0, 2),
     },
   })
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
 class GoalForm extends Component {
     inititalState = {
@@ -72,6 +83,15 @@ class GoalForm extends Component {
     render(){
         const { classes } = this.props;
         return (
+          <div className="flex-container" > 
+            <div className="flex-child" >
+            <Lottie 
+                    options={defaultOptions}
+                    height={400}
+                    width={400}
+                />
+                </div>
+                <div className="flex-child">
             <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -138,6 +158,8 @@ class GoalForm extends Component {
       
             <br />
           </Container>
+          </div>
+          </div>
         // <div>
         //     <div className="goal-page">
         //         <div className="form">
