@@ -44,7 +44,7 @@ const useStyles = theme => ({
 class GoalForm extends Component {
     inititalState = {
         goal_name: '',
-        goal_img: '',
+       
         goal_amount: 0
     }
 
@@ -60,7 +60,7 @@ class GoalForm extends Component {
         e.preventDefault()
         let newGoal = {
             goal_name: this.state.goal_name,
-            goal_img: this.state.goal_img,
+
             goal_amount: this.state.goal_amount,
             completed: false,
             user_id: parseInt(localStorage.getItem('user_id'))
@@ -116,7 +116,7 @@ class GoalForm extends Component {
                       autoFocus
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  {/* <Grid item xs={12} sm={6}>
                     <TextField
                       onChange={this.handleInputChange}
                       name='goal_img'
@@ -127,7 +127,7 @@ class GoalForm extends Component {
                       label="Goal Image URL"
                       autoComplete="goal_img"
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <TextField
                         type="number"

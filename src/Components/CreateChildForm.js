@@ -100,7 +100,7 @@ class CreateChildForm extends Component {
             'Auth-Key': localStorage.getItem('auth_key')
           }
         }).then(response => response.json())
-        .then(wallet => console.log(wallet))
+        .then(wallet => this.props.history.push('/'))
     }
 
     render(){

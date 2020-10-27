@@ -15,9 +15,10 @@ const defaultOptions = {
 
 export default class Wallet extends Component {
     state = {
-        wallet_amount: 0,
+        wallet: {},
         goals: [],
-        transactions: []
+        transactions: [],
+        progress: 0
     }
     componentDidMount(){
         const id = parseInt(localStorage.getItem('user_id'))
@@ -50,11 +51,12 @@ export default class Wallet extends Component {
                 this.getTransactions(wallet.id)
                 this.setState({
                     ...this.state,
-                    wallet_amount: wallet.amount
+                    wallet: wallet
                 })
             }
         }
     }
+
 
     getTransactions = (wallet_id) => {
         fetch('http://localhost:3001/transactions')
@@ -63,17 +65,43 @@ export default class Wallet extends Component {
     }
 
     getUserTransactions = (wallet_id, transactions) => {
+        this.setState({
+            ...this.state,
+            transactions: []
+        })
         for (const transaction of transactions) {
             if (transaction.wallet.id === wallet_id) {
                 this.setState({
                     ...this.state,
-                    transactions: [...this.state.transactions, transaction]
+                    transactions: [transaction, ...this.state.transactions]
                 })
             }
         }
-        console.log(this.state)
     }
 
+    handleState = (wallet) => {
+        this.setState({
+            ...this.state,
+            wallet: wallet
+        })
+    }
+
+    handleDelete = (e, id) => {
+        e.preventDefault();
+        console.log(id)
+        console.log(e)
+        fetch(`http://localhost:3001/goals/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(_ => {
+        const filteredGoals= [...this.state.goals].filter(goal => goal.id !== id)
+        this.setState({ ...this.state, goals: filteredGoals })
+        })
+    }
 
     render(){
         return (
@@ -82,9 +110,10 @@ export default class Wallet extends Component {
             <div className="flex-container">
                 <div className='flex-child' >
                 <h1 className="progress-page">Progress Page!</h1>
+                <h2>Wallet amount: ${this.state.wallet.amount}</h2>
                     <div id="cards">
                     {this.state.goals.map(goal => 
-                        <GoalCard  key={goal.id} goal={goal} wallet_amount={this.state.wallet_amount}/>
+                        <GoalCard  key={goal.id} goal={goal} wallet={this.state.wallet} handleState ={this.handleState} getTransactions={this.getTransactions} handleDelete={this.handleDelete} />
                         )}
 
                     </div>

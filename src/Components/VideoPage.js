@@ -53,6 +53,7 @@ const VideoPage = (props) => {
             <div className="video-child">
             <h2>{props.video.vid_name}</h2>
             <hr style={{background: props.video.line_color}}></hr>
+            <h4>{props.video.desc}</h4>
             <button className="completion-button" type="button" onClick={handleOpen}>
                     Watch More!
                 </button>
