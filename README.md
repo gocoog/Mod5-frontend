@@ -1,5 +1,5 @@
 # Money and Sense 
-Money and sense is an application that helps teach children the importance of good financial management. Money and Sense provides children with goals they can work towareds as well as a dedicated page for more advanced money management topics such as investing and retirement. 
+Money and sense is an application that helps teach children the importance of good financial management. Money and Sense provides children with goals they can work towards as well as a dedicated page for more advanced money management topics such as investing and retirement. 
 
 ## Models and Object Relationships
 
